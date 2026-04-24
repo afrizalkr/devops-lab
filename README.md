@@ -1,32 +1,47 @@
-# DevOps Lab
+# 🚀 DevOps Lab — End-to-End Infrastructure & CI/CD System
 
-## Overview
-Hands-on DevOps lab to simulate production-ready system.
+A complete DevOps playground that simulates a production-grade environment using Docker, Kubernetes, CI/CD pipelines, Infrastructure as Code, and Observability tools.
 
-## 📐 Architecture Diagram
+---
 
-Click to view full size:
+## 📐 Architecture Overview
 
-[View Diagram](./architecture/diagram.png) resents the end-to-end DevOps pipeline including CI/CD, Kubernetes orchestration, database replication, and monitoring stack.
+![Architecture Diagram](./architecture/diagram.png)
 
-## Stack
-- Docker
-- Kubernetes
-- GitHub Actions
-- HAProxy
-- PostgreSQL
+This architecture demonstrates a full DevOps lifecycle including:
 
-## Features
-- CI/CD pipeline
-- Containerized app
-- Auto build & push Docker image
+- Continuous Integration & Deployment (CI/CD)
+- Containerization using Docker
+- Kubernetes orchestration (K3s)
+- Load balancing (HAProxy + Nginx Ingress)
+- PostgreSQL replication (High Availability)
+- Monitoring & observability (Prometheus + Grafana)
+- Infrastructure as Code (Terraform + Ansible)
 
-## Usage
-Coming soon...
-fix ci
-retry
-fix token
-retry docker login
+---
+
+## 🧠 System Design Flow
+
+```text
+Developer
+   ↓
+Git Push (GitHub / GitLab)
+   ↓
+CI/CD Pipeline
+   ↓
+Docker Build → Container Registry
+   ↓
+Kubernetes Cluster (Dev / Prod)
+   ↓
+Ingress Controller (Nginx)
+   ↓
+Load Balancer (HAProxy)
+   ↓
+Application Services
+   ↓
+PostgreSQL (Replication)
+   ↓
+Monitoring (Prometheus + Grafana)
 
 ![DevOps](https://img.shields.io/badge/DevOps-Kubernetes-blue)
 ![CI/CD](https://img.shields.io/badge/CI/CD-Automated-green)
