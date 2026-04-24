@@ -2,76 +2,126 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>DevOps Lab</title>
+<title>DevOps Lab Dashboard</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color: white;
+  font-family: 'Arial', sans-serif;
+  background: #0b1220;
+  color: #e2e8f0;
 }
 
-/* HERO */
-.hero {
+/* HEADER */
+.header {
   text-align: center;
-  padding: 60px 20px;
+  padding: 50px 20px;
 }
 
-.hero h1 {
-  font-size: 42px;
+.header h1 {
+  font-size: 44px;
   background: linear-gradient(90deg,#38bdf8,#a78bfa,#22c55e);
   -webkit-background-clip: text;
   color: transparent;
+  margin: 0;
 }
 
-.badge {
-  display: inline-block;
-  padding: 6px 12px;
-  background: #22c55e;
-  border-radius: 20px;
-  font-size: 12px;
+.sub {
+  color: #94a3b8;
   margin-top: 10px;
 }
 
-/* CARD */
-.container {
+/* STATUS */
+.status {
+  margin-top: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(34,197,94,0.1);
+  border: 1px solid #22c55e;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* GRID */
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
   gap: 20px;
   padding: 40px;
 }
 
+/* CARD */
 .card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
   padding: 20px;
   border-radius: 16px;
-  backdrop-filter: blur(10px);
   transition: 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56,189,248,0.2);
+}
+
+.card h3 {
+  margin-top: 0;
 }
 
 /* PIPELINE */
 .pipeline {
-  text-align: center;
-  margin-top: 20px;
-  color: #94a3b8;
-  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 30px;
+  flex-wrap: wrap;
 }
 
-/* TECH BADGE */
-.tech span {
-  display: inline-block;
-  margin: 5px;
-  padding: 5px 10px;
+.step {
+  background: rgba(255,255,255,0.05);
+  padding: 10px 16px;
   border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.arrow {
+  color: #38bdf8;
+}
+
+/* TECH TAG */
+.tag {
+  display: inline-block;
+  margin: 4px;
+  padding: 5px 10px;
   background: #1e293b;
+  border-radius: 8px;
   font-size: 12px;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  color: #64748b;
+  font-size: 12px;
+  padding: 20px;
 }
 </style>
 
@@ -79,39 +129,54 @@ body {
 
 <body>
 
-<div class="hero">
-  <h1>🚀 DevOps Lab</h1>
-  <p>by Afrizal</p>
-  <div class="badge">🟢 Deployment Successful</div>
+<div class="header">
+  <h1>🚀 DevOps Lab Dashboard</h1>
+  <div class="sub">by Afrizal</div>
+
+  <div class="status">
+    <div class="dot"></div>
+    SYSTEM ONLINE
+  </div>
 </div>
 
-<div class="container">
+<div class="grid">
 
   <div class="card">
-    <h3>Project Overview</h3>
-    <p>End-to-End DevOps pipeline automation with Docker & Kubernetes.</p>
-    <div class="tech">
-      <span>Docker</span>
-      <span>Kubernetes</span>
-      <span>CI/CD</span>
-      <span>GitHub Actions</span>
+    <h3>📦 Project Overview</h3>
+    <p>End-to-end DevOps pipeline with automation & Kubernetes deployment.</p>
+    <div>
+      <span class="tag">Docker</span>
+      <span class="tag">Kubernetes</span>
+      <span class="tag">CI/CD</span>
+      <span class="tag">GitHub Actions</span>
     </div>
   </div>
 
   <div class="card">
-    <h3>Pipeline Flow</h3>
-    <p>Push → Build → Registry → Deploy → Monitor</p>
+    <h3>⚡ Pipeline Status</h3>
+    <p>Build → Test → Push → Deploy</p>
   </div>
 
   <div class="card">
-    <h3>Monitoring</h3>
-    <p>Ready for Prometheus & Grafana integration</p>
+    <h3>📊 Monitoring Ready</h3>
+    <p>Prepared for Prometheus & Grafana integration</p>
   </div>
 
 </div>
 
+<!-- PIPELINE VISUAL -->
 <div class="pipeline">
-⚡ CI/CD Pipeline Active | Kubernetes Cluster Running
+  <div class="step">Push Code</div>
+  <div class="arrow">→</div>
+  <div class="step">Build Image</div>
+  <div class="arrow">→</div>
+  <div class="step">Registry</div>
+  <div class="arrow">→</div>
+  <div class="step">Kubernetes Deploy</div>
+</div>
+
+<div class="footer">
+⚡ DevOps Lab Running on Kubernetes Cluster
 </div>
 
 </body>
