@@ -1,120 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DevOps Lab | Afrizal</title>
+<meta charset="UTF-8">
+<title>DevOps Lab</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #e2e8f0;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
+}
 
-    .container {
-      max-width: 900px;
-      margin: 80px auto;
-      padding: 20px;
-      text-align: center;
-    }
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: #38bdf8;
-    }
+.hero h1 {
+  font-size: 42px;
+  background: linear-gradient(90deg,#38bdf8,#a78bfa,#22c55e);
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
-    p {
-      font-size: 1.2rem;
-      color: #94a3b8;
-    }
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #22c55e;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-top: 10px;
+}
 
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      margin-top: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+/* CARD */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+  padding: 40px;
+}
 
-    .badge {
-      display: inline-block;
-      margin: 5px;
-      padding: 8px 12px;
-      border-radius: 8px;
-      background: #0ea5e9;
-      color: white;
-      font-size: 0.9rem;
-    }
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
 
-    .status {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #22c55e;
-    }
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #38bdf8;
+}
 
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #64748b;
-    }
+/* PIPELINE */
+.pipeline {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+  font-size: 14px;
+}
 
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
+/* TECH BADGE */
+.tech span {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: #1e293b;
+  font-size: 12px;
+}
+</style>
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>🚀 DevOps Lab</h1>
-    <p>by Afrizal</p>
 
-    <div class="card">
-      <h2>Project Overview</h2>
-      <p>
-        End-to-End DevOps pipeline with automated build, containerization,
-        and Kubernetes deployment.
-      </p>
+<div class="hero">
+  <h1>🚀 DevOps Lab</h1>
+  <p>by Afrizal</p>
+  <div class="badge">🟢 Deployment Successful</div>
+</div>
 
-      <div>
-        <span class="badge">Docker</span>
-        <span class="badge">Kubernetes</span>
-        <span class="badge">CI/CD</span>
-        <span class="badge">GitHub Actions</span>
-      </div>
+<div class="container">
 
-      <div class="status">
-        ✅ Deployment Successful
-      </div>
+  <div class="card">
+    <h3>Project Overview</h3>
+    <p>End-to-End DevOps pipeline automation with Docker & Kubernetes.</p>
+    <div class="tech">
+      <span>Docker</span>
+      <span>Kubernetes</span>
+      <span>CI/CD</span>
+      <span>GitHub Actions</span>
     </div>
-
-    <div class="card">
-      <h2>Pipeline Flow</h2>
-      <p>
-        Push Code → Build Image → Push to Registry → Deploy to Cluster
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>Repository</h2>
-      <p>
-        <a href="https://github.com/afrizalkr/devops-lab" target="_blank">
-          View on GitHub
-        </a>
-      </p>
-    </div>
-
-    <footer>
-      © 2026 DevOps Lab | Built with passion ⚡
-    </footer>
   </div>
+
+  <div class="card">
+    <h3>Pipeline Flow</h3>
+    <p>Push → Build → Registry → Deploy → Monitor</p>
+  </div>
+
+  <div class="card">
+    <h3>Monitoring</h3>
+    <p>Ready for Prometheus & Grafana integration</p>
+  </div>
+
+</div>
+
+<div class="pipeline">
+⚡ CI/CD Pipeline Active | Kubernetes Cluster Running
+</div>
+
 </body>
 </html>
