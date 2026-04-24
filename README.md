@@ -20,3 +20,4 @@ Coming soon...
 fix ci
 retry
 fix token
+retry docker login
