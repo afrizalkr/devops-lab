@@ -19,3 +19,4 @@ Hands-on DevOps lab to simulate production-ready system.
 Coming soon...
 fix ci
 retry
+fix token
