@@ -7,7 +7,7 @@ Hands-on DevOps lab to simulate production-ready system.
 
 Click to view full size:
 
-[View Diagram](./architecture/diagram.png)resents the end-to-end DevOps pipeline including CI/CD, Kubernetes orchestration, database replication, and monitoring stack.
+[View Diagram](./architecture/diagram.png) resents the end-to-end DevOps pipeline including CI/CD, Kubernetes orchestration, database replication, and monitoring stack.
 
 ## Stack
 - Docker
