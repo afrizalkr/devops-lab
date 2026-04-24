@@ -20,6 +20,10 @@ This architecture demonstrates a full DevOps lifecycle including:
 
 ---
 
+![DevOps](https://img.shields.io/badge/DevOps-Kubernetes-blue)
+![CI/CD](https://img.shields.io/badge/CI/CD-Automated-green)
+![Infra](https://img.shields.io/badge/IaC-Terraform-purple)
+
 ## 🧠 System Design Flow
 
 ```text
@@ -42,7 +46,3 @@ Application Services
 PostgreSQL (Replication)
    ↓
 Monitoring (Prometheus + Grafana)
-
-![DevOps](https://img.shields.io/badge/DevOps-Kubernetes-blue)
-![CI/CD](https://img.shields.io/badge/CI/CD-Automated-green)
-![Infra](https://img.shields.io/badge/IaC-Terraform-purple)
