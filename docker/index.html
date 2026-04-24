@@ -1,210 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>DevOps Ops Dashboard</title>
+<title>K8s Real Dashboard</title>
 
 <style>
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: #070b14;
-  color: #e2e8f0;
+  background: #0b1220;
+  color: white;
+  font-family: Arial;
 }
 
-/* HEADER */
-.header {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.header h1 {
-  font-size: 40px;
-  background: linear-gradient(90deg,#38bdf8,#a78bfa,#22c55e);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.status-bar {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: rgba(34,197,94,0.1);
-  border: 1px solid #22c55e;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  background: #22c55e;
-  border-radius: 50%;
-  animation: blink 1.5s infinite;
-}
-
-@keyframes blink {
-  0%,100% {opacity:1;}
-  50% {opacity:0.2;}
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-/* CARD */
 .card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  padding: 16px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #38bdf8;
-}
-
-/* METRICS */
-.metric {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.bar {
-  height: 6px;
-  background: #1e293b;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.fill {
-  height: 100%;
-  background: linear-gradient(90deg,#38bdf8,#22c55e);
-  width: 70%;
-}
-
-/* TERMINAL */
-.terminal {
-  background: #020617;
-  border: 1px solid #1e293b;
+  background: rgba(255,255,255,0.05);
   padding: 15px;
+  margin: 10px;
   border-radius: 12px;
-  font-family: monospace;
-  font-size: 12px;
-  height: 200px;
-  overflow: hidden;
 }
 
-.log {
-  color: #22c55e;
-  animation: scroll 8s linear infinite;
-}
-
-@keyframes scroll {
-  0% {transform: translateY(100%);}
-  100% {transform: translateY(-100%);}
-}
-
-/* PIPELINE */
-.pipeline {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px;
-  flex-wrap: wrap;
-}
-
-.step {
-  background: rgba(255,255,255,0.04);
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  font-size: 12px;
-  color: #64748b;
-  padding: 20px;
-}
+.ok { color: #22c55e; }
+.bad { color: #ef4444; }
 </style>
 
 </head>
 
 <body>
 
-<div class="header">
-  <h1>🚀 DevOps Ops Dashboard</h1>
+<h2>🚀 Kubernetes Live Dashboard</h2>
 
-  <div class="status-bar">
-    <div class="dot"></div>
-    SYSTEM HEALTHY
-  </div>
+<div class="card">
+  <h3>Pods</h3>
+  <pre id="pods">Loading...</pre>
 </div>
 
-<!-- METRICS -->
-<div class="grid">
-
-  <div class="card">
-    <h3>CPU Usage</h3>
-    <div class="metric">72%</div>
-    <div class="bar"><div class="fill" style="width:72%"></div></div>
-  </div>
-
-  <div class="card">
-    <h3>Memory Usage</h3>
-    <div class="metric">58%</div>
-    <div class="bar"><div class="fill" style="width:58%"></div></div>
-  </div>
-
-  <div class="card">
-    <h3>Pods Running</h3>
-    <div class="metric">2/2</div>
-  </div>
-
-  <div class="card">
-    <h3>Latency</h3>
-    <div class="metric">32ms</div>
-  </div>
-
+<div class="card">
+  <h3>Services</h3>
+  <pre id="svc">Loading...</pre>
 </div>
 
-<!-- PIPELINE -->
-<div class="pipeline">
-  <div class="step">Code Push</div>
-  <div class="step">Build</div>
-  <div class="step">Docker</div>
-  <div class="step">K8s Deploy</div>
-</div>
+<script>
+async function load() {
+  const pods = await fetch("http://localhost:3000/pods").then(r=>r.json());
+  const svc = await fetch("http://localhost:3000/services").then(r=>r.json());
 
-<!-- TERMINAL -->
-<div class="card" style="margin:20px;">
-  <h3>📡 Live Logs</h3>
-  <div class="terminal">
-    <div class="log">
-      [INFO] Pod devops-lab started...<br>
-      [INFO] Pulling image nginx...<br>
-      [INFO] Deployment successful<br>
-      [INFO] Service exposed on NodePort 30100<br>
-      [INFO] Health check OK<br>
-      [INFO] Traffic routing stable<br>
-      [INFO] Monitoring active<br>
-    </div>
-  </div>
-</div>
+  document.getElementById("pods").innerText =
+    JSON.stringify(pods.items.map(p => ({
+      name: p.metadata.name,
+      status: p.status.phase
+    })), null, 2);
 
-<div class="footer">
-⚡ Kubernetes Cluster | DevOps Lab Monitoring System
-</div>
+  document.getElementById("svc").innerText =
+    JSON.stringify(svc.items.map(s => ({
+      name: s.metadata.name,
+      type: s.spec.type,
+      port: s.spec.ports
+    })), null, 2);
+}
+
+load();
+setInterval(load, 5000);
+</script>
 
 </body>
 </html>
