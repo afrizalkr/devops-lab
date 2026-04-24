@@ -3,6 +3,12 @@
 ## Overview
 Hands-on DevOps lab to simulate production-ready system.
 
+## 🏗️ Architecture Overview
+
+![DevOps Architecture](./architecture/diagram.png)
+
+This diagram represents the end-to-end DevOps pipeline including CI/CD, Kubernetes orchestration, database replication, and monitoring stack.
+
 ## Stack
 - Docker
 - Kubernetes
