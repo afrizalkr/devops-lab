@@ -3,11 +3,11 @@
 ## Overview
 Hands-on DevOps lab to simulate production-ready system.
 
-## 🏗️ Architecture Overview
+## 📐 Architecture Diagram
 
-![DevOps Architecture](./architecture/diagram.png)
+Click to view full size:
 
-This diagram represents the end-to-end DevOps pipeline including CI/CD, Kubernetes orchestration, database replication, and monitoring stack.
+[View Diagram](./architecture/diagram.png)resents the end-to-end DevOps pipeline including CI/CD, Kubernetes orchestration, database replication, and monitoring stack.
 
 ## Stack
 - Docker
@@ -27,3 +27,7 @@ fix ci
 retry
 fix token
 retry docker login
+
+![DevOps](https://img.shields.io/badge/DevOps-Kubernetes-blue)
+![CI/CD](https://img.shields.io/badge/CI/CD-Automated-green)
+![Infra](https://img.shields.io/badge/IaC-Terraform-purple)
